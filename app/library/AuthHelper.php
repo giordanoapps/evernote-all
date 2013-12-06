@@ -180,6 +180,18 @@ class AuthHelper
 	public function doAuth()
 	{
 		$result = new stdClass();
+
+		if(Session::has('accessToken'))
+		{
+			$result->TempToken = Session::get('requestToken');
+			$result->Verifier	 = Session::get('oauthVerifier');
+			$result->Token		 = Session::get('accessToken');
+			$result->Url			 = Session::get('loginUrl');
+
+			$this->auth = $result;
+
+			return;
+		}
 		
 		if(Input::has('oauth_verifier')
 		&& !Session::has('accessToken'))

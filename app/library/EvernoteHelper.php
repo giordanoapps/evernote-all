@@ -59,6 +59,10 @@ class EvernoteHelper extends AuthHelper
  			{
  				$this->doUser($user);
  			}
+ 			else
+ 			{
+ 				$this->user = $user;
+ 			}
  		}
  	}
 
