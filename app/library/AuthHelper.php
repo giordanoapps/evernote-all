@@ -183,10 +183,10 @@ class AuthHelper
 
 		if(Session::has('accessToken'))
 		{
-			$result->TempToken = Session::get('requestToken');
-			$result->Verifier	 = Session::get('oauthVerifier');
-			$result->Token		 = Session::get('accessToken');
-			$result->Url			 = Session::get('loginUrl');
+			$result->tempToken = Session::get('requestToken');
+			$result->verifier	 = Session::get('oauthVerifier');
+			$result->token		 = Session::get('accessToken');
+			$result->url			 = Session::get('loginUrl');
 
 			$this->auth = $result;
 
@@ -201,17 +201,17 @@ class AuthHelper
 		{
 			$status = $this->getTemporaryCredentials();
 
-			$result->TempToken = Session::get('requestToken');
-			$result->Verifier	 = null;
-			$result->Token		 = null;
-			$result->Url			 = Session::get('loginUrl');
+			$result->tempToken = Session::get('requestToken');
+			$result->verifier	 = null;
+			$result->token		 = null;
+			$result->url			 = Session::get('loginUrl');
 		}
 		else
 		{
-			$result->TempToken = Session::get('requestToken');
-			$result->Verifier	 = Session::get('oauthVerifier');
-			$result->Token		 = Session::get('accessToken');
-			$result->Url			 = Session::get('loginUrl');
+			$result->tempToken = Session::get('requestToken');
+			$result->verifier	 = Session::get('oauthVerifier');
+			$result->token		 = Session::get('accessToken');
+			$result->url			 = Session::get('loginUrl');
 		}
 
 		$this->auth = $result;

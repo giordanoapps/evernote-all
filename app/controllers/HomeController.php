@@ -20,15 +20,14 @@ class HomeController extends BaseController {
 		}
 
 		$evernote = new EvernoteHelper($this->user);
+		$return = new ReturnModel();
 
-		if($evernote->auth->Token == null)
-		{
-			return $this->login($evernote);
-		}
+		$return->setUser($this->user);
+		$return->setAuth($evernote->auth);
+		
+		ConversionHelper::toArray($return);
 
-		//ConversionHelper::toArray($evernote);
-
-		return $evernote;
+		return $return;
 	}
 
  /**
@@ -38,20 +37,10 @@ class HomeController extends BaseController {
 	{
 		$evernote = new EvernoteHelper();
 
-		if($evernote->auth->Token == null)
+		if($evernote->auth->token == null)
 		{
 			return $this->login($evernote);
 		}
-
-		return $evernote;
-	}
-
- /**
- 	* Login function.
- 	*/
- 	public function login($evernote)
- 	{
-		ConversionHelper::toArray($evernote);
 
 		return $evernote;
 	}

@@ -46,10 +46,10 @@ class EvernoteHelper extends AuthHelper
 
  		$this->doAuth();
 
- 		if($this->auth->Token != null)
+ 		if($this->auth->token != null)
  		{
  			$this->client = new Evernote\Client(
- 												array('token' => $this->auth->Token)
+ 												array('token' => $this->auth->token)
  											);
 
  			$this->userStore = $this->client->getUserStore();
@@ -99,7 +99,7 @@ class EvernoteHelper extends AuthHelper
  	*/
  	private function doTags()
  	{
- 		$this->tags = $this->noteStore->listTags($this->auth->Token);
+ 		$this->tags = $this->noteStore->listTags($this->auth->token);
 
  		foreach($this->tags as $tag)
  		{
@@ -140,7 +140,7 @@ class EvernoteHelper extends AuthHelper
  		$resultSpec->includeTagGuids = true;
 
  		$this->notes = $this->noteStore->findNotesMetadata(
-											$this->auth->Token,
+											$this->auth->token,
 											$filter,
 											0,
 											9999,
@@ -155,7 +155,7 @@ class EvernoteHelper extends AuthHelper
 	 		{
 	 			$noteModel = new Note();
 
-	 			$share_link = $this->noteStore->shareNote($this->auth->Token, $note->guid);
+	 			$share_link = $this->noteStore->shareNote($this->auth->token, $note->guid);
 
 	 			$noteModel->guid = $note->guid;
 	 			$noteModel->title = $note->title;
