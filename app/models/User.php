@@ -11,6 +11,10 @@ class User extends Eloquent {
 
 	public $timestamps = true;
 
+	protected $hidden = array('timestamps','incrementing','exists');
+
+	protected $visible = array('id', 'name', 'username');
+
 	public function tags()
 	{
 		return $this->hasMany('Tag');
