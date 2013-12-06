@@ -26,7 +26,7 @@ class HomeController extends BaseController {
 			return $this->login($evernote);
 		}
 
-		ConversionHelper::toJson($evernote);
+		//ConversionHelper::toArray($evernote);
 
 		return $evernote;
 	}
